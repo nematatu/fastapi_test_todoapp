@@ -7,6 +7,7 @@ services:
       - .:/src
     ports:
       - 8000:8000
+      - 8501:8501
   db:
     image: mysql:8.0
     platform: linux/x86_64
