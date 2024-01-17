@@ -13,9 +13,9 @@ WORKDIR /src
 # poetryでライブラリをインストール (pyproject.tomlが既にある場合)
 #RUN poetry config virtualenvs.in-project true
 #RUN if [ -f pyproject.toml ]; then poetry install --no-root; fi
-
+RUN python -m pip install --upgrade pip
 RUN pip install fastapi uvicorn sqlalchemy aiomysql streamlit requests
-
+#CMD ["python","-m","api.migrate_db"]
 # uvicornのサーバーを立ち上げる
 ENTRYPOINT ["uvicorn", "api.main:app", "--host", "0.0.0.0", "--reload"]
 #CMD ["streamlit","run","app/main.py"]
